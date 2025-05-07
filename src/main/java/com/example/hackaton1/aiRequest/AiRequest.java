@@ -1,6 +1,7 @@
 package com.example.hackaton1.aiRequest;
 
 import com.example.hackaton1.company.Company;
+import com.example.hackaton1.restriction.ModelType;
 import com.example.hackaton1.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,30 +14,26 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class AiRequest {
+@AllArgsConstructor
 
+public class AiRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String modelName;
-    private String requestType; // chat, completion, multimodal
-    private int tokensUsed;
-
-    @Column(length = 10000)
-    private String prompt;
-
-    @Column(length = 20000)
-    private String response;
-
-    private String fileName; // si es multimodal
-
-    private LocalDateTime timestamp;
-
     @ManyToOne
-    @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    private Company company;
+
+    @Enumerated(EnumType.STRING)
+    private ModelType modelType;
+
+    private String input;
+    private String output;
+    private Integer tokenCount;
+    private LocalDateTime timestamp;
+    private String fileName;
 }

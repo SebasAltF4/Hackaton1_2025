@@ -12,18 +12,16 @@ import lombok.Setter;
 import java.util.*;
 
 @Entity
-@Table(name = "users")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String fullName;
+    private String name;
     private String email;
     private String password;
 
@@ -31,15 +29,12 @@ public class User {
     private Role role;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
     private Company company;
 
-    // Relaciones opcionales
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Limit> limits = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List<Limit> limits;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AiRequest> aiRequests = new ArrayList<>();
-
+    @OneToMany(mappedBy = "user")
+    private List<AiRequest> requests;
 }
 
