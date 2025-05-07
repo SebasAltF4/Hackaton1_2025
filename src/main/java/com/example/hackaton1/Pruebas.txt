@@ -1,0 +1,17 @@
+"nombreDeUsuario": "Mijail1",
+    "password": "123",
+    "correo": "a@g.com",
+    "role": 0
+}
+
+"nombreDeUsuario": "Mijail2",
+    "password": "123",
+    "correo": "b@g.com",
+    "role": 1
+}
+
+"nombreDeUsuario": "Mijail3",
+    "password": "123",
+    "correo": "c@g.com",
+    "role": 2
+}

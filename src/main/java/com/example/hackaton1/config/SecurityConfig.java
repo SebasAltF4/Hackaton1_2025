@@ -1,8 +1,7 @@
 package com.example.hackaton1.config;
 
-
-import com.example.hackaton1.domain.UserDetailsServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.hackaton1.auth.domain.UserDetailsServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,17 +23,20 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
-    @Autowired
-    JwtAuthenticationFilter jwtAuthenticationFilter;
-
-    @Autowired
-    UserDetailsServiceImpl userDetailsService;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final UserDetailsServiceImpl userDetailsService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(authorize -> authorize.requestMatchers(antMatcher("/auth/**")).permitAll().anyRequest().authenticated())
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(antMatcher("/auth/**")).permitAll()
+                        .requestMatchers("/api/admin/**").hasRole("SPARKY_ADMIN")
+                        .requestMatchers("/api/company/**").hasRole("COMPANY_ADMIN")
+                        .requestMatchers("/api/ai/**").hasRole("USER")
+                        .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
@@ -60,6 +62,4 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
-
-
 }
