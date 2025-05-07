@@ -22,6 +22,8 @@ public class Restriction {
     private String modelName;
     private Integer maxTokens;
     private Integer maxRequests;
+
+    @Column(name = "time_window")
     private Duration timeWindow;
 
     @ManyToOne(fetch = FetchType.LAZY)
