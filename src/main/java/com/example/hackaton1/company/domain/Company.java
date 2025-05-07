@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 @Entity
@@ -26,9 +27,8 @@ public class Company {
     private String ruc;
 
     @Column(name = "affiliation_date", nullable = false)
-    private ZonedDateTime affiliationDate;
+    private LocalDateTime affiliationDate = LocalDateTime.now();
 
     @Column(nullable = false)
-    private Boolean active;
-
+    private Boolean active = true;
 }
