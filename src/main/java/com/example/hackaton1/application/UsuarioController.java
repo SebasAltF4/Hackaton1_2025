@@ -1,8 +1,8 @@
 package com.example.hackaton1.application;
 
 
-import com.example.hackaton1.domain.Usuario;
-import com.example.hackaton1.domain.UsuarioService;
+import com.example.hackaton1.Entities.Usuario.Usuario;
+import com.example.hackaton1.Entities.Usuario.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

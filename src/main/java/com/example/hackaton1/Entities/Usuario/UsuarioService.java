@@ -1,4 +1,4 @@
-package com.example.hackaton1.domain;
+package com.example.hackaton1.Entities.Usuario;
 
 
 import com.example.hackaton1.repository.UsuarioRepository;

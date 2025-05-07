@@ -1,6 +1,7 @@
-package com.example.hackaton1.domain;
+package com.example.hackaton1.domain.Auth;
 
 
+import com.example.hackaton1.Entities.Usuario.Usuario;
 import com.example.hackaton1.dto.JwtAuthenticationResponse;
 import com.example.hackaton1.dto.SigninRequest;
 import com.example.hackaton1.repository.UsuarioRepository;

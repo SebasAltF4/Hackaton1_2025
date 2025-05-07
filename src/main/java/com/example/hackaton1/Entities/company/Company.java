@@ -1,4 +1,4 @@
-package com.example.hackaton1.company;
+package com.example.hackaton1.Entities.company;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

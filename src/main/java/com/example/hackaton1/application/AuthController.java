@@ -1,8 +1,8 @@
 package com.example.hackaton1.application;
 
 
-import com.example.hackaton1.domain.AuthenticationService;
-import com.example.hackaton1.domain.Usuario;
+import com.example.hackaton1.domain.Auth.AuthenticationService;
+import com.example.hackaton1.Entities.Usuario.Usuario;
 import com.example.hackaton1.dto.JwtAuthenticationResponse;
 import com.example.hackaton1.dto.SigninRequest;
 import org.springframework.beans.factory.annotation.Autowired;

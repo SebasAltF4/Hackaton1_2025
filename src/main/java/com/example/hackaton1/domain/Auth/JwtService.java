@@ -1,4 +1,4 @@
-package com.example.hackaton1.domain;
+package com.example.hackaton1.domain.Auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

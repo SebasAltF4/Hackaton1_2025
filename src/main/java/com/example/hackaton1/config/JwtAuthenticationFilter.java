@@ -1,7 +1,7 @@
 package com.example.hackaton1.config;
 
 
-import com.example.hackaton1.domain.JwtService;
+import com.example.hackaton1.domain.Auth.JwtService;
 import com.example.hackaton1.domain.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
