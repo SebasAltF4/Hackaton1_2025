@@ -9,7 +9,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,7 +19,7 @@ public class CompanyService {
     private final ModelMapper modelMapper;
 
     public CompanyDto createCompany(CreateCompanyRequest createCompanyRequest) {
-        if(companyRepository.existByRuc(createCompanyRequest.getRuc())){
+        if(companyRepository.existsByRuc(createCompanyRequest.getRuc())){
             throw new ResourceConflictException("La empresa con RUC " + createCompanyRequest.getRuc() + " ya existe");
         }
         Company company = modelMapper.map(createCompanyRequest, Company.class);

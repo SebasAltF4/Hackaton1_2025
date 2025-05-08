@@ -1,11 +1,11 @@
 package com.example.hackaton1.company.application;
 
-import com.example.hackaton1.company.domain.Company;
 import com.example.hackaton1.company.domain.CompanyService;
 import com.example.hackaton1.company.dto.CompanyDto;
 import com.example.hackaton1.company.dto.CreateCompanyRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ public class CompanyController {
     @PostMapping
     @PreAuthorize( "hasRole('ROLE_SPARKY_ADMIN')")
     public ResponseEntity<CompanyDto> createCompany(@Valid @RequestBody CreateCompanyRequest createCompanyRequest) {
-        return ResponseEntity.ok(companyService.createCompany(createCompanyRequest));
+        return ResponseEntity.status(HttpStatus.CREATED).body(companyService.createCompany(createCompanyRequest));
     }
 
     @GetMapping
@@ -52,7 +52,7 @@ public class CompanyController {
 
     @GetMapping("/{id}/consumption")
     @PreAuthorize( "hasAnyRole('ROLE_SPARKY_ADMIN', 'ROLE_COMPANY_ADMIN')")
-    public ResponseEntity<Void> getConsumption(@PathVariable Long id) {
+    public ResponseEntity<Void> getCompanyConsumption(@PathVariable Long id) {
         return ResponseEntity.ok().build();
     }
 }

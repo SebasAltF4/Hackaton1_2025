@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
-    Boolean existByRuc(String ruc);
+    Boolean existsByRuc(String ruc);
 }

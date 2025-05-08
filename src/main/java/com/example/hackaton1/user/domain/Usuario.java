@@ -1,5 +1,6 @@
 package com.example.hackaton1.user.domain;
 
+import com.example.hackaton1.company.domain.Company;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,12 +36,13 @@ public class Usuario implements UserDetails {
     private Role role;
 
     private Boolean expired;
-
     private Boolean locked;
-
     private Boolean credentialsExpired;
-
     private Boolean enable;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
